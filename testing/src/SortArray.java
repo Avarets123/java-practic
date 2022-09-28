@@ -3,7 +3,6 @@ import java.util.Arrays;
 public class SortArray {
     public static void main(String[] args) {
 
-//        int[] gen = {12, 3, 56, 1, 435, 34, 1324, 213, -1, 4};
 
         int[] gen = GenerateArrayWithRandomNumbers.generateRandomArray(12, 150);
 
