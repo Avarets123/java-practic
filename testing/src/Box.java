@@ -23,6 +23,11 @@ public class Box {
         return width * height * length;
     }
 
+    public String showInfo() {
+
+        return "width" + width + ", " + "height" + height + ", " + "length" + length;
+    }
+
 
 
 }
