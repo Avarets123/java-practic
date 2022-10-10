@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="CarListTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2022-10-08T19:29:04" hostname="computer" time="0.042">
+<testsuite name="CarListTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2022-10-10T09:40:31" hostname="computer" time="0.043">
   <properties/>
-  <testcase name="whenAdded100ElementsThenSizeMustBe100()" classname="CarListTest" time="0.024"/>
-  <testcase name="methodGetReturnedRightValue()" classname="CarListTest" time="0.002"/>
+  <testcase name="whenAdded100ElementsThenSizeMustBe100()" classname="CarListTest" time="0.023"/>
+  <testcase name="methodGetReturnedRightValue()" classname="CarListTest" time="0.003"/>
   <testcase name="whenElementRemovedByIndexThenSizeMustBeDecreased()" classname="CarListTest" time="0.002"/>
   <testcase name="whenListClearedThenSizeMustBeZero()" classname="CarListTest" time="0.002"/>
   <testcase name="addCarToMiddleCollection()" classname="CarListTest" time="0.002"/>
