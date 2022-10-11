@@ -14,4 +14,19 @@ public class Car {
     public String getBrand() {
         return brand;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Car) {
+            Car car = (Car) obj;
+            return car.brand.equals(this.brand) && car.number == this.number;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        return this.brand.hashCode() + this.number;
+    }
 }
