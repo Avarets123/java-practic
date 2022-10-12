@@ -43,4 +43,13 @@ public class CarSetTest {
         carSet.clear();
         assertEquals(0, carSet.size());
     }
+
+    @Test
+    public void checkItemInCollection() {
+        Car car = new Car("Check", 123);
+        carSet.add(car);
+        assertTrue(carSet.contains(car));
+        carSet.remove(car);
+        assertFalse(carSet.contains(car));
+    }
 }
