@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.Iterator;
+
 public class CarHashSet implements CarSet {
     private static final int INITIAL_CAPACITY = 16;
     private static final double LOAD_FACTORY = 0.75;
@@ -114,6 +117,40 @@ public class CarHashSet implements CarSet {
 
     private int getElementPosition(Car car, int arrayLength) {
         return Math.abs(car.hashCode() % arrayLength);
+    }
+
+    @Override
+    public Iterator<Car> iterator() {
+        return  new Iterator<Car>() {
+            private int index = 0;
+            private int indexArr = 0;
+            private Entry entry;
+
+
+            @Override
+            public boolean hasNext() {
+                return index < size;
+            }
+
+            @Override
+            public Car next() {
+                while (array[indexArr] == null) {
+                    indexArr++;
+                }
+                if (entry == null) {
+                    entry = array[indexArr];
+                }
+                Car car = entry.value;
+                entry = entry.next;
+
+                if (entry == null) {
+                    indexArr++;
+                }
+                index++;
+                return  car;
+            }
+
+        };
     }
 
 

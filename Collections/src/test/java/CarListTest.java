@@ -9,7 +9,7 @@ class CarListTest {
 
     @BeforeEach
     void setUp() {
-        carList = new CarLinkedList();
+        carList = new CarArrayList();
         for (int i = 0; i < 100; i++) {
             carList.add(new Car("Brand" + i, i));
         }
@@ -68,5 +68,14 @@ class CarListTest {
         carList.add(car);
         assertTrue(carList.contains(car));
         assertFalse(carList.contains(new Car("BMW", 116)));
+    }
+
+    @Test
+    public void testForEach() {
+        int index = 0;
+        for (Car car : carList) {
+            index++;
+        }
+        assertEquals(100, index);
     }
 }

@@ -52,4 +52,13 @@ public class CarSetTest {
         carSet.remove(car);
         assertFalse(carSet.contains(car));
     }
+
+    @Test
+    public void testForEach() {
+        int index = 0;
+        for (Car car : carSet) {
+            index++;
+        }
+        assertEquals(100, index);
+    }
 }
