@@ -29,4 +29,17 @@ public class Car {
     public int hashCode() {
         return this.brand.hashCode() + this.number;
     }
+
+//    @Override
+//    public int compareTo(Car car) {
+//        return this.brand.compareTo(car.brand);
+//    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "brand='" + brand + '\'' +
+                ", number=" + number +
+                '}';
+    }
 }
