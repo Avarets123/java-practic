@@ -58,13 +58,13 @@ public class UserRepository implements EntityRepository<User> {
 //        return array;
 //    }
 
-        @Override
+    @Override
     public List<User> findAll() {
         List<User> array = new ArrayList<>();
         try (
                 Reader fileReader = new FileReader(fileName);
                 BufferedReader reader = new BufferedReader(fileReader);
-                ){
+        ) {
 
             String userReadLine = reader.readLine();
             while (userReadLine != null) {
