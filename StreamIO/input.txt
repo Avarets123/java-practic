@@ -1,3 +1,6 @@
-1|Osman|Gasanov|26
-2|Ahmed|Gasanov|28
-3|Osman|Gasanov|25
+Osman|Gasanov|26
+Ahmed|Gasanov|28
+Osman|Gasanov|25
+Maga|Magomedov|25
+Maga|Magomedov|25
+Maga|Magomedov|25

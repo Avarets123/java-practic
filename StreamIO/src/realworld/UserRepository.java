@@ -1,9 +1,6 @@
 package realworld;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
@@ -16,13 +13,16 @@ public class UserRepository implements EntityRepository<User> {
         this.fileName = fileName;
     }
 
-    private static   final Function<String, User> userMapper = userString -> {
+    private static final Function<String, User> stringToUserMapper = userString -> {
         String[] parts = userString.split("\\|");
-        Long id = Long.parseLong(parts[0]);
-        String firstName = parts[1];
-        String lastName = parts[2];
-        Integer age = Integer.parseInt(parts[3]);
-        return new User(id, firstName, lastName, age);
+        String firstName = parts[0];
+        String lastName = parts[1];
+        Integer age = Integer.parseInt(parts[2]);
+        return new User(firstName, lastName, age);
+    };
+
+    private static final Function<User, String> userToStringMapper = user -> {
+        return user.getFirstName() + "|" + user.getLastName() + "|" + user.getAge();
     };
 
 //    @Override
@@ -78,7 +78,7 @@ public class UserRepository implements EntityRepository<User> {
 
             String userReadLine = reader.readLine();
             while (userReadLine != null) {
-                User user = userMapper.apply(userReadLine);
+                User user = stringToUserMapper.apply(userReadLine);
                 array.add(user);
                 userReadLine = reader.readLine();
             }
@@ -100,7 +100,7 @@ public class UserRepository implements EntityRepository<User> {
 
             String userReadLine = reader.readLine();
             while (userReadLine != null) {
-                User user = userMapper.apply(userReadLine);
+                User user = stringToUserMapper.apply(userReadLine);
                 if (user.getAge() > less) {
                     array.add(user);
                 }
@@ -112,6 +112,23 @@ public class UserRepository implements EntityRepository<User> {
             throw new IllegalArgumentException(e);
         }
         return array;
+    }
+
+    @Override
+    public void save(User value) {
+        try
+                (
+                        FileWriter fileWriter = new FileWriter(fileName, true);
+                        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+                ) {
+
+            String userToSave = userToStringMapper.apply(value);
+            bufferedWriter.write(userToSave);
+            bufferedWriter.newLine();
+
+        } catch (IOException e) {
+            throw new IllegalArgumentException(e);
+        }
     }
 
 }

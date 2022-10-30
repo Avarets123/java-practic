@@ -6,5 +6,7 @@ public class Main {
 
 
         System.out.println((userRepository.findAllByAgeGreaterThan(25).toString()));
+        User user = new User("Maga", "Magomedov", 25);
+        userRepository.save(user);
     }
 }
