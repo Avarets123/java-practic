@@ -2,8 +2,10 @@ package realworld;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class UserRepository implements EntityRepository<User> {
 
@@ -129,6 +131,66 @@ public class UserRepository implements EntityRepository<User> {
         } catch (IOException e) {
             throw new IllegalArgumentException(e);
         }
+    }
+
+    @Override
+    public List<String> findAllByUniqueName() {
+        try {
+            return new BufferedReader(new FileReader(fileName))
+                    .lines()
+                    .map(stringToUserMapper)
+                    .map(User::getFirstName)
+                    .distinct()
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new IllegalArgumentException(e);
+        }
+    }
+
+    @Override
+    public int findMinAge() {
+        try {
+            return new BufferedReader(new FileReader(fileName))
+                    .lines()
+                    .map(stringToUserMapper)
+                    .mapToInt(User::getAge)
+                    .min()
+                    .getAsInt();
+        } catch (Exception e) {
+            throw new IllegalArgumentException(e);
+        }
+
+    }
+
+    @Override
+    public double getAverageAge() {
+        try {
+            return new BufferedReader(new FileReader(fileName))
+                    .lines()
+                    .map(stringToUserMapper)
+                    .mapToInt(User::getAge)
+                    .average()
+                    .getAsDouble();
+        } catch (Exception e) {
+            throw new IllegalArgumentException(e);
+        }
+
+    }
+
+    @Override
+    public User findWithMinAge() {
+
+        try {
+            return new BufferedReader(new FileReader(fileName))
+                    .lines()
+                    .map(stringToUserMapper)
+//                    .min((a, b) -> a.getAge() - b.getAge())
+                    .min(Comparator.comparing(User::getAge))
+                    .get();
+        } catch (Exception e) {
+            throw new IllegalArgumentException(e);
+        }
+
     }
 
 }

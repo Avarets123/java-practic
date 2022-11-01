@@ -5,8 +5,8 @@ public class Main {
         UserRepository userRepository = new UserRepository("input.txt");
 
 
-        System.out.println((userRepository.findAllByAgeGreaterThan(25).toString()));
-        User user = new User("Maga", "Magomedov", 25);
-        userRepository.save(user);
+        System.out.println(userRepository.findWithMinAge());
+//        User user = new User("Maga", "Magomedov", 25);
+//        userRepository.save(user);
     }
 }
