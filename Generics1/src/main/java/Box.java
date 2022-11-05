@@ -39,8 +39,14 @@ public class Box<T extends Number & Comparable<T> & Serializable> {
 
   }
 
-//  public void method(List<Number> numbers) {
-//  }
+  public static <E> void transfer(List<? extends E> src, List<? super E> dst) {
+    dst.addAll(src);
+    src.clear();
+  }
+
+  public static <U> U getFirstElement(List<U> elements) {
+    return elements.get(0);
+  }
 
   public static void method(List<? extends Number> numbers) {
 
