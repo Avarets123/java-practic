@@ -1,24 +1,48 @@
-public class Box<T, K, V> {
+import java.io.Serializable;
+import java.util.List;
 
-    private T name;
-    private K first;
-    private V second;
+public class Box<T extends Number & Comparable<T> & Serializable> {
+  private T[] array;
 
-    public Box(T name, K first, V second) {
-        this.name = name;
-        this.first = first;
-        this.second = second;
+  public Box(T... array) {
+    this.array = array;
+  }
+
+  public double avg() {
+    double result = 0;
+
+    for (T element : array) {
+      result += ((Number) element).doubleValue();
     }
 
-    public T getName() {
-        return name;
+
+    return result / array.length;
+  }
+
+  public T[] getArray() {
+    return array;
+  }
+
+  public void setArray(T[] array) {
+    this.array = array;
+  }
+
+
+  public int compareTo(Box<? extends Number> another) {
+    if (avg() > another.avg()) {
+      return 1;
+    } else if (avg() == another.avg()) {
+      return 0;
+    } else {
+      return -1;
     }
 
-    public K getFirst() {
-        return first;
-    }
+  }
 
-    public V getSecond() {
-        return second;
-    }
+//  public void method(List<Number> numbers) {
+//  }
+
+  public static void method(List<? extends Number> numbers) {
+
+  }
 }
