@@ -1,9 +1,15 @@
 package exampl2;
 
 public class Main {
+
   public static void main(String[] args) {
+    long beforeMain = System.currentTimeMillis();
+
     Thread thread1 = new Thread(() -> {
-      System.out.println("1");
+      long before = System.currentTimeMillis();
+      System.out.println("first");
+      long after = System.currentTimeMillis();
+      System.out.println(after - before);
     });
     Thread thread2 = new Thread(() -> {
       try {
@@ -11,7 +17,10 @@ public class Main {
       } catch (InterruptedException e) {
         throw new RuntimeException(e);
       }
-      System.out.println("2");
+      long before = System.currentTimeMillis();
+      System.out.println("second");
+      long after = System.currentTimeMillis();
+      System.out.println(after - before);
     });
     Thread thread3 = new Thread(() -> {
       try {
@@ -19,15 +28,20 @@ public class Main {
       } catch (InterruptedException e) {
         throw new RuntimeException(e);
       }
-      System.out.println("3");
+      long before = System.currentTimeMillis();
+      System.out.println("three");
+      long after = System.currentTimeMillis();
+      System.out.println(after - before);
     });
-
 
     thread1.start();
     thread2.start();
     thread3.start();
 
-  }
+    long afterMain = System.currentTimeMillis();
 
+    System.out.println("TimeProcess: " + (afterMain - beforeMain));
+
+  }
 
 }
