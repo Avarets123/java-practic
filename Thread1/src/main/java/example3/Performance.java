@@ -74,4 +74,24 @@ public class Performance {
     System.out.println("WithoutConcurrency: " + (after - before));
 
   }
+
+  public static  void startTimer() {
+    Thread thread = new Thread(new Runnable() {
+      @Override
+      public void run() {
+        int second = 0;
+        try {
+          while (true) {
+            System.out.println(second++);
+            Thread.sleep(1000);
+          }
+        } catch (InterruptedException e) {
+          throw new RuntimeException(e);
+        }
+      }
+    });
+    thread.setDaemon(true);
+    thread.start();
+
+  }
 }
