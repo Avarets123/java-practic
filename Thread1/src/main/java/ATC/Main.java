@@ -16,7 +16,7 @@ public class Main {
 //      } catch (InterruptedException e) {
 //        throw new RuntimeException(e);
 //      }
-      atc.getMoney("Gusein", 40000);
+      atc.getMoney("Andrey", 40000);
     });
 
     Thread thread3 = new Thread(() -> {
