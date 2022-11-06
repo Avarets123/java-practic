@@ -11,7 +11,9 @@ public class Counter {
     value++;
   }
 
-  public synchronized void dec() {
-    value--;
+  public  void dec() {
+    synchronized (this) {
+      value--;
+    }
   }
 }
