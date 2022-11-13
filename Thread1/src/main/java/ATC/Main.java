@@ -23,7 +23,7 @@ public class Main {
 //      try {
 //        thread2.join();
 //      } catch (InterruptedException e) {
-//        throw new RuntimeException(e);
+//        throw new RuntimeException(e);~
 //      }
       atc.getMoney("Osman", 40000);
     });
