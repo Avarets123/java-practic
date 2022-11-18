@@ -9,6 +9,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import java.time.LocalTime;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,7 @@ import lombok.ToString;
 @EqualsAndHashCode(exclude = "course")
 @ToString(exclude = "course")
 @Entity
+@Builder
 public class Lesson {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
