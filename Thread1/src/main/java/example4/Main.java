@@ -27,6 +27,7 @@ public class Main {
 
     }
 
+    executorService.shutdown();
     try {
       downLatch.await();
     } catch (InterruptedException e) {
