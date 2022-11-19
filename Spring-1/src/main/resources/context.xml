@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="usersService" class="org.spring1.services.UsersServiceImpl">
+        <constructor-arg name="emailValidator" ref="emailSimpleValidator"/>
+        <constructor-arg name="passwordValidator" ref="passwordLengthValidator"/>
+        <constructor-arg name="usersRepository" ref="usersRepositoryFiles"/>
+    </bean>
+
+    <bean id="emailSimpleValidator" class="org.spring1.validators.impl.EmailSimpleValidator">
+        <constructor-arg name="characters" value="@."/>
+    </bean>
+
+    <bean id="passwordLengthValidator" class="org.spring1.validators.impl.PasswordLengthValidator">
+        <property name="minLength" value="7"/>
+    </bean>
+
+    <bean id="usersRepositoryFiles" class="org.spring1.repositories.impls.UsersRepositoryFilesImpl">
+        <constructor-arg name="filename" value="users.txt"/>
+    </bean>
+
+</beans>
