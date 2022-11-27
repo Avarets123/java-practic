@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-import ru.web.firstwebapp.models.User;
+import ru.web.firstwebapp.dto.UserForm;
 import ru.web.firstwebapp.services.UsersService;
 
 @RequiredArgsConstructor
@@ -25,13 +24,13 @@ public class UsersController {
             @RequestParam(value = "dir", required = false) String dir,
             Model model
     ) {
-        model.addAttribute("users", usersService.getAllUsers(orderBy, dir));
+        model.addAttribute("users", usersService.getAllUsers());
         return "users_page";
     }
 
 
     @PostMapping("/users")
-    public String addUser(User user) {
+    public String addUser(UserForm user) {
         usersService.addUser(user);
         return "redirect:/users";
     }
@@ -43,6 +42,22 @@ public class UsersController {
     ) {
         model.addAttribute("user", usersService.getUser(id));
         return "user_page";
+    }
+
+
+    @GetMapping("/users/{id}/update")
+    public String updateUser(
+            @PathVariable("id") Long userId,
+            UserForm user
+    ) {
+        usersService.updateUser(userId, user);
+        return "redirect:/users/" + userId;
+    }
+
+    @GetMapping("/users/{id}/update")
+    public String deleteUser(@PathVariable("id") Long userId) {
+        usersService.deleteUser(userId);
+        return "redirect:/users/";
     }
 
 }
