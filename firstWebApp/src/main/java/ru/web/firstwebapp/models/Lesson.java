@@ -4,6 +4,7 @@ package ru.web.firstwebapp.models;
 import lombok.*;
 
 import jakarta.persistence.*;
+
 import java.time.LocalTime;
 
 @Data
@@ -20,7 +21,7 @@ public class Lesson {
 
     private String name;
     @Column(length = 1000)
-    private String summary;
+    private String description;
 
     @Column(name = "start_time")
     private LocalTime startTime;

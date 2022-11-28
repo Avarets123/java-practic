@@ -39,5 +39,40 @@
     </label>
     <input type="submit" value="Добавить">
 </form>
+
+
+<br>
+<br>
+
+<form action="/courses/${course.id}/lesson" method="post">
+    <label> Уроки
+        <select name="lesson-id">
+            <#list allLessons as lesson>
+                <option value="${lesson.id}">${lesson.name} ${lesson.description}</option>
+            </#list>
+        </select>
+    </label>
+    <input type="submit" value="Добавить">
+</form>
+
+
+<table>
+    <tr>
+        <th>Название урока</th>
+        <th>Описание урока</th>
+        <th>Начало урока</th>
+        <td>Конец урока</td>
+    </tr>
+
+    <#list lessonsInCourse as lesson >
+        <tr>
+            <td>${lesson.name}</td>
+            <td>${lesson.description}</td>
+            <td>${lesson.startTime}</td>
+            <td>${lesson.finishTime}</td>
+        </tr>
+    </#list>
+
+</table>
 </body>
 </html>
