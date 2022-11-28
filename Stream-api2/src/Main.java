@@ -13,12 +13,16 @@ public class Main {
 
 
         List<String> strings = randomNumbers.stream()
-                .filter(num -> num % 5 == 0)
-                .map(num -> Math.sqrt(num))
-                .map(num -> "Корень: " + num)
+                .filter(num -> num % 5 == 0 && num % 2 == 0)
+                .map(Math:: sqrt)
+                .map(Main::mapToString)
                 .toList();
 
         System.out.println(strings);
 
+    }
+
+    public static String mapToString(double a) {
+        return "Sqrt: " + a;
     }
 }
