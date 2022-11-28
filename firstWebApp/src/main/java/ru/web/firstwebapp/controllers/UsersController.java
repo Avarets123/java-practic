@@ -45,7 +45,7 @@ public class UsersController {
     }
 
 
-    @GetMapping("/users/{id}/update")
+    @PostMapping("/users/{id}/update")
     public String updateUser(
             @PathVariable("id") Long userId,
             UserForm user
@@ -54,10 +54,10 @@ public class UsersController {
         return "redirect:/users/" + userId;
     }
 
-    @GetMapping("/users/{id}/update")
+    @GetMapping("/users/{id}/delete")
     public String deleteUser(@PathVariable("id") Long userId) {
         usersService.deleteUser(userId);
-        return "redirect:/users/";
+        return "redirect:/users";
     }
 
 }

@@ -9,7 +9,27 @@
 </head>
 <body>
 <a href="/users">Ко всем пользователям</a>
-<h1>${user.email}</h1>
-<h2>${user.description}</h2>
+<form action="/users/${user.id}/update" method="post">
+    <label>
+        Email
+        <input type="email" name="email" value=${user.email}>
+    </label>
+    <br>
+    <label>
+        Имя
+        <input type="text" name="firstName" value=${user.firstName}>
+    </label>
+    <br>
+    <label>
+        Фамилия
+        <input type="text" name="lastName" value=${user.lastName}>
+    </label>
+    <label>
+        Возраст
+        <input type="text" name="age" value=${user.age}>
+    </label>
+    <br>
+    <input type="submit" value="Сохранить">
+</form>
 </body>
 </html>

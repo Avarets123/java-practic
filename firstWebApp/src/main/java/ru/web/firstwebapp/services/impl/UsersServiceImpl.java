@@ -17,7 +17,7 @@ public class UsersServiceImpl implements UsersService {
 
     @Override
     public List<User> getAllUsers() {
-        return userRepository.findAll();
+        return userRepository.findAllByStateNot(User.State.DELETED);
     }
 
 

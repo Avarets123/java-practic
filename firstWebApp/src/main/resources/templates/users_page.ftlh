@@ -6,15 +6,25 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Пользователи</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <table>
     <tr>
         <th>Email</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <td>Действия</td>
     </tr>
     <#list users as user>
         <tr>
-            <td><a href="/users/${user.id}">${user.email}</a></td>
+            <td>${user.email}</td>
+            <td>${user.firstName}</td>
+            <td>${user.lastName}</td>
+            <td>
+                <a href="/users/${user.id}">Перейти</a>
+                <a href="/users/${user.id}/delete">Удалить</a>
+            </td>
         </tr>
     </#list>
 </table>
@@ -25,14 +35,15 @@
     </label>
     <br>
     <label>
-        Пароль
-        <input type="password" name="password" placeholder="Введите пароль">
+        Имя
+        <input type="text" name="firstName" placeholder="Введите имя">
     </label>
     <br>
     <label>
-        Описание
-        <input type="text" name="description" placeholder="Введите описание">
+        Фамилия
+        <input type="text" name="lastName" placeholder="Введите фамилию">
     </label>
+    <br>
     <input autofocus type="submit" value="Добавить"/>
 </form>
 </body>
