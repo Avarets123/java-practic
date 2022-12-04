@@ -24,7 +24,7 @@
 
     <form action="/films" method="post">
         <input type="text" name="name" placeholder="название фильма">
-        <#--    <input type="text" name="day" placeholder="дата формат гггг-мм-дд">-->
+        <#--            <input type="text" name="day" placeholder="дата формат гггг-мм-дд">-->
         <input type="time" name="startTime">
         <input type="time" name="finishTime">
         <input type="number" placeholder="стоимость билета" name="amountTicket">

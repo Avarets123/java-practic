@@ -18,7 +18,7 @@
 <h3>Куплено:</h3>
 <#list tickets as ticket >
     <p>Место: ${ticket.place}, ${ticket.film.name}, начало:  ${ticket.film.startTime}, конец:  ${ticket.film.finishTime},
-        пользователь:
+
     </p>
 
 </#list>

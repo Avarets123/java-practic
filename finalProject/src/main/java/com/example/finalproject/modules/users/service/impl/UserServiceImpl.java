@@ -8,6 +8,10 @@ import com.example.finalproject.modules.users.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transaction;
 import java.util.List;
 import java.util.UUID;
 
@@ -20,7 +24,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void saveUser(UserCreateDto user) {
-
         UserEntity newUser = UserEntity.builder()
                 .email(user.getEmail())
                 .role(user.getRole())

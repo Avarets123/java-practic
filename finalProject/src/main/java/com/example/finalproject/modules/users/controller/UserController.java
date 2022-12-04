@@ -1,6 +1,7 @@
 package com.example.finalproject.modules.users.controller;
 
 import com.example.finalproject.modules.auth.config.details.CustomUserDetails;
+import com.example.finalproject.modules.users.dto.UserUpdateDto;
 import com.example.finalproject.modules.users.entity.UserEntity;
 import com.example.finalproject.modules.users.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -44,6 +46,12 @@ public class UserController {
     public String deleteUser(@PathVariable("id") Long userId) {
         userService.deleteUser(userId);
         return "redirect:/users";
+    }
+
+    @PostMapping("users/{id}update")
+    public String updateUser(@PathVariable("id") Long userId, UserUpdateDto userUpdateDto) {
+        userService.updateUser(userId, userUpdateDto);
+        return "redirect:/profile";
     }
 
 }
