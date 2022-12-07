@@ -8,10 +8,7 @@ import org.hibernate.annotations.Check;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -24,7 +21,7 @@ public class TicketEntity {
     private Long id;
 
 
-    @Column(unique = true)
+    @Column()
     @Check(constraints = "place >= 50 and place > 0")
     private Integer place;
 

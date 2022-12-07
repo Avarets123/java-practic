@@ -5,6 +5,7 @@ import ru.web.firstwebapp.models.Course;
 import ru.web.firstwebapp.models.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findAllByStateNot(User.State state);
@@ -12,5 +13,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findAllByCoursesNotContains(Course course);
 
     List<User> findAllByCoursesContains(Course course);
+
+    Optional<User> findByEmail(String email);
 
 }

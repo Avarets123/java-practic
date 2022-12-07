@@ -57,11 +57,6 @@ class UserServiceTest {
     }
 
     @Test
-    public void getUserByIdIsNotExist() {
-        assertThrows(RuntimeException.class, () -> userService.getUserById(NOT_EXISTED_USER_ID));
-    }
-
-    @Test
     public void getAllUsers() {
         assertEquals(List.of(USER, USER, USER), userService.getAllUsers());
     }
